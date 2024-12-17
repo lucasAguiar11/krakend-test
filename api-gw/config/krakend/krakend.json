@@ -1,0 +1,23 @@
+{
+  "$schema": "https://www.krakend.io/schema/krakend.json",
+  "version": 3,
+  "name": "KrakenD - API Gateway POS",
+  "timeout": "120s",
+  "cache_ttl": "30s",
+  "output_encoding": "no-op",
+  "echo_endpoint": true,
+  "endpoints": [
+    {
+      "@comment": "example docker host",
+      "endpoint": "/api/docker-host",
+      "method": "GET",
+      "input_headers": ["Content-Type"],
+      "backend": [
+        {
+          "host": ["http://host.docker.internal:3000"],
+          "url_pattern": "/health"
+        }
+      ]
+    }
+  ]
+}

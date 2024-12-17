@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  krakend_ce:
+    image: devopsfaith/krakend:latest
+    volumes:
+      - ./config/krakend:/etc/krakend
+    ports:
+      - "2345:1234" # expose the debug port
+      - "8080:8080" # expose the proxy port
+    command: ["run", "-dc", "/etc/krakend/krakend.json"]
+    restart: always

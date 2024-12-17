@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  project:
+    image: dm/project
+    container_name: dm-project
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+      - '50061:50051'
